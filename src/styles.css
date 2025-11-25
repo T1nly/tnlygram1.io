@@ -1,0 +1,368 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+html, body, #root {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+.body-login {
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(90deg,  #000000, #505050);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Фон для страницы постов после входа */
+.body-logged {
+    min-height: 100vh; /* минимум высота экрана */
+    background: linear-gradient(135deg, #000000, #ffffff);
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #fff;
+}
+
+.news-sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 220px;
+    height: 100vh;
+    background: rgba(0,0,0,0.85);
+    box-shadow: 0 0 20px #ffffff;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.news-sidebar h2 {
+    text-align: center;
+    color: #00ffff;
+    text-shadow: 0 0 10px #000000;
+}
+.main-content {
+    margin-left: 220px; /* чтобы не перекрывать новости */
+    padding: 20px;
+    flex: 1;
+    overflow-y: auto;
+}
+
+/* === Кнопки === */
+button {
+     margin-left: 5px;
+    cursor: pointer;
+    background: linear-gradient(90deg, #00ffff, #757575, #757575);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+    transition: 0.3s all;
+    box-shadow: 0 0 10px #757575, 0 0 20px #757575;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px #757575, 0 0 30px #757575;
+}
+
+/* === Inputs === */
+input {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: none;
+    background: rgba(255,255,255,0.05);
+    color: #fff;
+    font-size: 14px;
+}
+
+.post-input {
+    width: 86%;
+    padding: 10px;
+    margin-left: 50px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: none;
+    background: rgba(255,255,255,0.05);
+    color: #fff;
+    font-size: 14px;
+}
+
+input:focus {
+    outline: none;
+    background: rgba(255,255,255,0.15);
+    box-shadow: 0 0 10px #7e7e7e;
+}
+
+/* === Контейнеры === */
+.container {
+    max-width: 400px; /* компактная ширина */
+    margin: 50px auto;
+    padding: 20px;
+    background: rgba(0,0,0,0.75);
+    border-radius: 15px;
+    box-shadow: 0 0 15px #ff8800, 0 0 25px #ff00ff;
+}
+
+/* === Заголовки === */
+h1, h2 {
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #ffffff;
+    text-shadow: 0 0 10px #000000, 0 0 20px #ffffff;
+}
+
+/* === Посты === */
+.posts-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.post {
+    margin-bottom: 20px;
+    margin-left: 50px;
+    background: rgba(0, 0, 0, 0.658);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #ffffff;
+}
+
+/* === Левая панель новости === */
+.sidebar {
+    flex: 1;
+    padding: 20px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 15px;
+    box-shadow: 0 0 20px #00ffff;
+}
+
+/* === Кнопка профиля и аватарка === */
+.profile-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #222;
+    border: 2px solid #ff0000;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 0 15px #ff8800, 0 0 25px #ff00ff;
+}
+
+.profile-button img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center; /* центрируем изображение */
+}
+
+/* Меню профиля */
+.profile-menu {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    width: 220px;
+    background: rgba(0,0,0,0.85);
+    border-radius: 15px;
+    box-shadow: 0 0 15px #ff8800, 0 0 25px #ff00ff;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.profile-menu input[type="file"],
+.profile-menu input[type="text"] {
+    width: 93%;
+    padding: 8px;
+    border-radius: 8px;
+    border: none;
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(-10px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+@media (max-width: 768px) {
+                html, body {
+            overflow-x: hidden;
+        }
+
+        /* Для контейнеров и основных блоков */
+        .body-login, .body-logged, .main-content, .news-sidebar {
+            box-sizing: border-box; /* чтобы padding и border не увеличивали ширину */
+        }
+
+        /* Для всех элементов, чтобы не вылезали */
+        * {
+            max-width: 100%;
+        }
+    .news-sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        box-shadow: none;
+        padding: 10px;
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 15px;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 10px;
+    }
+
+    .container {
+        margin: 20px;
+        padding: 15px;
+    }
+
+    .post {
+        margin-left: 0;
+        padding: 10px;
+    }
+
+    button {
+        padding: 8px 15px;
+        font-size: 12px;
+    }
+
+    .profile-menu {
+        top: 70px;
+        right: 10px;
+        width: 90%;
+        padding: 20px;
+    }
+
+    .profile-button {
+        width: 40px;
+        height: 40px;
+    }
+}
+@media (max-width: 320px) {
+                html, body {
+            overflow-x: hidden;
+        }
+
+        /* Для контейнеров и основных блоков */
+        .body-login, .body-logged, .main-content, .news-sidebar {
+            box-sizing: border-box; /* чтобы padding и border не увеличивали ширину */
+        }
+
+        /* Для всех элементов, чтобы не вылезали */
+        * {
+            max-width: 100%;
+        }
+    .news-sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        box-shadow: none;
+        padding: 10px;
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 15px;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 10px;
+    }
+
+    .container {
+        margin: 20px;
+        padding: 15px;
+    }
+
+    .post {
+        margin-left: 0;
+        padding: 10px;
+    }
+
+    button {
+        padding: 8px 15px;
+        font-size: 12px;
+    }
+
+    .profile-menu {
+        top: 70px;
+        right: 25px;
+        width: 70%;
+        padding: 20px;
+    }
+
+    .profile-button {
+        width: 40px;
+        height: 40px;
+    }
+}
+@media (max-width: 425px) {
+            html, body {
+            overflow-x: hidden;
+        }
+
+        /* Для контейнеров и основных блоков */
+        .body-login, .body-logged, .main-content, .news-sidebar {
+            box-sizing: border-box; /* чтобы padding и border не увеличивали ширину */
+        }
+
+        /* Для всех элементов, чтобы не вылезали */
+        * {
+            max-width: 100%;
+        }
+    .news-sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        box-shadow: none;
+        padding: 10px;
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 15px;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 10px;
+    }
+
+    .container {
+        margin: 20px;
+        padding: 15px;
+    }
+
+    .post {
+        margin-left: 0;
+        padding: 10px;
+    }
+
+    button {
+        padding: 8px 15px;
+        font-size: 12px;
+    }
+
+    .profile-menu {
+        top: 70px;
+        right: 10px;
+        width: 85%;
+        padding: 20px;
+    }
+
+    .profile-button {
+        width: 40px;
+        height: 40px;
+    }
+}
